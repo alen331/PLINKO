@@ -5,16 +5,18 @@ class Particle{
         }
         this.body = Bodies.circle(x,y,r,op);
         this.r = r;
-
-        this.color = color(random(0,255), random(0,255), random(0,255))
+        this.color = color(random(0,255), random(0,255), random(0,255));
+        World.add(world,this.body);
     }
     display(){
-        push();
-        translate(this.body.position.x,this.body.position.y);
-        rotate(this.body.angle);
-      ellipseMode(CENTER);
+        var angle = this.body.angle;
+        var pos = this.body.position;
+      push();
+      translate(pos.x,pos.y);
+      rotate(angle);
+      ellipseMode(RADIUS);
       fill(this.color);
-      ellipse(this.body.position.x,this.body.position.y,this.r);
+      ellipse(0,0,this.r);
       pop();
     }
 }

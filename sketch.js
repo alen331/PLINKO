@@ -13,10 +13,6 @@ function setup() {
   engine = Engine.create();
   world = engine.world;
 
-if(frameCount % 60 === 0){
-  particles.push(new Particle(random(width/2-10,width/2+10),10,15));
-}
-
   ground1  = new Ground(0,400,10,800);
   ground2 = new Ground(240,800,800,10);
   ground3 = new Ground(480,400,10,800);
@@ -74,8 +70,12 @@ function draw() {
   background(0);  
   Engine.update(engine);
 
-  for(var j = 0; j<particles.length;j++){
-    particles[j].display;
+  if(frameCount % 60 === 0){
+    particles.push(new Particle(random(width/2-10,width/2+10),10,15));
+  }
+
+    for(var j = 0; j<particles.length;j++){
+  particles[j].display;
   }
 
   ground.display();
